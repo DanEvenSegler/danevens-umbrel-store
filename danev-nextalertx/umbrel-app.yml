@@ -1,0 +1,29 @@
+manifestVersion: 1
+id: danev-nextalertx
+name: nextalertx
+tagline: Network visibility and asset intelligence
+icon: https://netalertx.com/NetAlertX_logo.png
+category: Development
+version: "26.1.17"
+port: 20211
+description: >-
+  NetAlertX is a network discovery and asset inventory tool for your local
+  network. It helps identify devices, track changes, and surface useful
+  visibility into your LAN.
+
+developer: NetAlertX
+website: https://netalertx.com
+submitter: NetAlertX Community
+submission: https://github.com/netalertx/NetAlertX
+repo: https://github.com/netalertx/NetAlertX
+support: https://github.com/netalertx/NetAlertX/issues
+gallery:
+  - https://raw.githubusercontent.com/netalertx/NetAlertX/main/docs/img/GENERAL/github_social_image.jpg
+  - https://raw.githubusercontent.com/netalertx/NetAlertX/main/docs/img/WEB_UI_PORT_DEBUG/container_port.png
+  - https://raw.githubusercontent.com/netalertx/NetAlertX/main/docs/img/DEBUG_API_SERVER/graphql_settings_port_token.png
+releaseNotes: >-
+  Initial Community App Store integration for nextalertx.
+dependencies: []
+path: ""
+defaultUsername: ""
+defaultPassword: ""

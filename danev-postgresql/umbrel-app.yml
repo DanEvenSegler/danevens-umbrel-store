@@ -1,0 +1,27 @@
+manifestVersion: 1
+id: danev-postgresql
+name: postgresql
+tagline: Relational database server
+icon: https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/postgresql.svg
+category: Development
+version: "16"
+port: 5432
+description: >-
+  PostgreSQL is a powerful, open source relational database server.
+
+developer: PostgreSQL Global Development Group
+website: https://www.postgresql.org
+submitter: NetAlertX Community
+submission: https://github.com/postgres/postgres
+repo: https://github.com/postgres/postgres
+support: https://www.postgresql.org/support/
+gallery:
+  - https://www.postgresql.org/media/img/about/press/elephant.png
+  - https://www.postgresql.org/media/img/about/press/elephant.png
+  - https://www.postgresql.org/media/img/about/press/elephant.png
+releaseNotes: >-
+  Initial Community App Store integration for postgresql.
+dependencies: []
+path: ""
+defaultUsername: postgres
+defaultPassword: postgres

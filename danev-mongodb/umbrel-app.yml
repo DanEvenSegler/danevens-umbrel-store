@@ -1,0 +1,27 @@
+manifestVersion: 1
+id: danev-mongodb
+name: mongodb
+tagline: Document database server
+icon: https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/mongodb.svg
+category: Development
+version: "8"
+port: 27017
+description: >-
+  MongoDB is a flexible document database for modern application data.
+
+developer: MongoDB, Inc.
+website: https://www.mongodb.com
+submitter: NetAlertX Community
+submission: https://github.com/mongodb/mongo
+repo: https://github.com/mongodb/mongo
+support: https://www.mongodb.com/community/forums/
+gallery:
+  - https://www.mongodb.com/assets/images/global/leaf.png
+  - https://www.mongodb.com/assets/images/global/leaf.png
+  - https://www.mongodb.com/assets/images/global/leaf.png
+releaseNotes: >-
+  Initial Community App Store integration for mongodb.
+dependencies: []
+path: ""
+defaultUsername: admin
+defaultPassword: admin

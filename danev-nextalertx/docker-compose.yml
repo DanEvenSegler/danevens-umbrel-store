@@ -1,0 +1,39 @@
+version: "3.7"
+
+services:
+
+  app_proxy:
+    environment:
+      APP_HOST: danev-nextalertx_netalertx_1
+      APP_PORT: 20211
+
+  netalertx:
+    image: ghcr.io/netalertx/netalertx:latest
+    restart: unless-stopped
+    read_only: true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - NET_BIND_SERVICE
+      - CHOWN
+      - SETUID
+      - SETGID
+    volumes:
+      - netalertx_data:/data
+      - /etc/localtime:/etc/localtime:ro
+    tmpfs:
+      - /tmp:uid=20211,gid=20211,mode=1700,rw,noexec,nosuid,nodev,async,noatime,nodiratime
+    environment:
+      PUID: "20211"
+      PGID: "20211"
+      LISTEN_ADDR: 0.0.0.0
+      PORT: "20211"
+      APP_CONF_OVERRIDE: '{"GRAPHQL_PORT":"20212"}'
+      NETALERTX_DEBUG: "0"
+      ALWAYS_FRESH_INSTALL: "false"
+      TZ: UTC
+
+volumes:
+  netalertx_data:
