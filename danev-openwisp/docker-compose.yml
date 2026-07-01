@@ -63,6 +63,7 @@ services:
       - USE_OPENWISP_FIRMWARE=True
       - TZ=UTC
       - SSL_CERT_MODE=No
+      - DJANGO_ALLOWED_HOSTS=*
     volumes:
       - openwisp_static:/opt/openwisp/static
       - openwisp_media:/opt/openwisp/media
@@ -95,6 +96,7 @@ services:
       - USE_OPENWISP_FIRMWARE=True
       - TZ=UTC
       - SSL_CERT_MODE=No
+      - DJANGO_ALLOWED_HOSTS=*
     volumes:
       - openwisp_media:/opt/openwisp/media
       - openwisp_private_storage:/opt/openwisp/private
@@ -126,6 +128,7 @@ services:
       - USE_OPENWISP_FIRMWARE=True
       - TZ=UTC
       - SSL_CERT_MODE=No
+      - DJANGO_ALLOWED_HOSTS=*
     depends_on:
       - dashboard
 
@@ -162,6 +165,7 @@ services:
       - TZ=UTC
       - SSL_CERT_MODE=No
       - IFACES=eth0 wlan0 enp1s0 # Host-Netzwerkadapter für Scans
+      - DJANGO_ALLOWED_HOSTS=*
     volumes:
       - openwisp_media:/opt/openwisp/media
       - openwisp_private_storage:/opt/openwisp/private
@@ -203,6 +207,7 @@ services:
       - TZ=UTC
       - SSL_CERT_MODE=No
       - IFACES=eth0 wlan0 enp1s0 # Host-Netzwerkadapter für das Monitoring
+      - DJANGO_ALLOWED_HOSTS=*
     volumes:
       - openwisp_media:/opt/openwisp/media
       - openwisp_private_storage:/opt/openwisp/private
@@ -235,6 +240,7 @@ services:
       - USE_OPENWISP_FIRMWARE=True
       - TZ=UTC
       - SSL_CERT_MODE=No
+      - DJANGO_ALLOWED_HOSTS=*
     depends_on:
       - postgres
       - redis
@@ -244,17 +250,17 @@ services:
     image: openwisp/openwisp-nginx:edge
     restart: always
     environment:
-      - DASHBOARD_DOMAIN=umbrel.local
-      - API_DOMAIN=umbrel.local
-      - VPN_DOMAIN=umbrel.local
+      - NGINX_CUSTOM_FILE=True
       - SSL_CERT_MODE=No
     volumes:
       - openwisp_static:/opt/openwisp/public/static:ro
       - openwisp_media:/opt/openwisp/public/media:ro
       - openwisp_private_storage:/opt/openwisp/public/private:ro
+      - ./openwisp.conf:/etc/nginx/conf.d/openwisp.conf:ro
     depends_on:
       - dashboard
       - api
+      - websocket
       - websocket
 
 volumes:
