@@ -1,0 +1,30 @@
+manifestVersion: 1
+id: danev-kasm-chrome
+name: Kasm Chrome
+tagline: Virtual Google Chrome browser with VNC access
+icon: https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/googlechrome.svg
+category: Development
+version: "1.0.0"
+port: 3010
+description: >-
+  Kasm Chrome is a virtual Google Chrome browser running inside a Docker container, powered by KasmVNC technology.
+  It provides a high-performance, low-latency browser session directly in your web browser with secure login capabilities.
+  
+  Key Features:
+  - Browser in Browser: Access a fully functional Google Chrome instance through any modern web browser.
+  - KasmVNC Powered: Smooth rendering and responsive input handling for a seamless experience.
+  - Safe & Isolated: Run web applications and browse untrusted sites in an isolated containerized sandbox.
+  - Basic Authentication: Protected by a secure username and password of your choice.
+developer: Kasm Technologies & LinuxServer.io
+website: https://kasmweb.com
+submitter: Dan Evens
+submission: https://github.com/linuxserver/docker-chrome
+repo: https://github.com/linuxserver/docker-chrome
+support: https://github.com/linuxserver/docker-chrome/issues
+gallery: []
+releaseNotes: >-
+  Initial release of Kasm Chrome virtual browser app.
+dependencies: []
+path: ""
+defaultUsername: "admin"
+defaultPassword: "money-easy-password"

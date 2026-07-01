@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+
+  app_proxy:
+    environment:
+      APP_HOST: danev-kasm-chrome_chrome_1
+      APP_PORT: 3000
+
+  chrome:
+    image: lscr.io/linuxserver/chrome:latest
+    container_name: danev-kasm-chrome_chrome_1
+    restart: unless-stopped
+    security_opt:
+      - seccomp:unconfined
+    shm_size: '1gb'
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+      - CUSTOM_USER=admin
+      - PASSWORD=money-easy-password
+    volumes:
+      - kasm_chrome_config:/config
+
+volumes:
+  kasm_chrome_config:
