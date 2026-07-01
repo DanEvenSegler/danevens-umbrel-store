@@ -7,7 +7,14 @@ category: Development
 version: "16"
 port: 5432
 description: >-
-  PostgreSQL is a powerful, open source relational database server.
+  PostgreSQL is a powerful, open-source object-relational database system with over 35 years of active development.
+  It has earned a strong reputation for reliability, feature robustness, and performance. PostgreSQL is SQL-compliant and highly extensible, allowing you to define your own data types, index types, and functional languages.
+  
+  Key Features:
+  - Robust Concurrency: Employs Multi-Version Concurrency Control (MVCC) to ensure high performance even under heavy loads.
+  - Rich Data Types: Supports structured (SQL), semi-structured (JSON/JSONB, XML), key-value, and spatial data.
+  - Active Community: Backed by a vast, global developer community and a massive ecosystem of extensions.
+  - Highly Extensible: Easily add custom functions, operators, and procedural language plugins.
 
 developer: PostgreSQL Global Development Group
 website: https://www.postgresql.org
@@ -16,9 +23,9 @@ submission: https://github.com/postgres/postgres
 repo: https://github.com/postgres/postgres
 support: https://www.postgresql.org/support/
 gallery:
-  - https://www.postgresql.org/media/img/about/press/elephant.png
-  - https://www.postgresql.org/media/img/about/press/elephant.png
-  - https://www.postgresql.org/media/img/about/press/elephant.png
+  - https://raw.githubusercontent.com/docker-library/docs/master/postgres/logo.png
+  - https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=1000
+  - https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=1000
 releaseNotes: >-
   Initial Community App Store integration for postgresql.
 dependencies: []

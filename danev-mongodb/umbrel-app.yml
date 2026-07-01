@@ -7,7 +7,14 @@ category: Development
 version: "8"
 port: 27017
 description: >-
-  MongoDB is a flexible document database for modern application data.
+  MongoDB is a source-available, cross-platform, document-oriented NoSQL database designed for ease of development and scaling.
+  Instead of using tables and rows as in relational databases, MongoDB utilizes JSON-like documents with dynamic schemas, making data integration in certain types of applications easier and faster.
+  
+  Key Features:
+  - Document-Oriented: Store data in flexible, JSON-like documents.
+  - High Performance: Support for embedded data models reduces I/O activity.
+  - Rich Query Language: Strong support for CRUD operations, aggregations, text search, and geospatial queries.
+  - Scalability: Horizontal scaling through sharding and high availability through replica sets.
 
 developer: MongoDB, Inc.
 website: https://www.mongodb.com
@@ -16,9 +23,9 @@ submission: https://github.com/mongodb/mongo
 repo: https://github.com/mongodb/mongo
 support: https://www.mongodb.com/community/forums/
 gallery:
-  - https://www.mongodb.com/assets/images/global/leaf.png
-  - https://www.mongodb.com/assets/images/global/leaf.png
-  - https://www.mongodb.com/assets/images/global/leaf.png
+  - https://raw.githubusercontent.com/docker-library/docs/master/mongo/logo.png
+  - https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=1000
+  - https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=1000
 releaseNotes: >-
   Initial Community App Store integration for mongodb.
 dependencies: []

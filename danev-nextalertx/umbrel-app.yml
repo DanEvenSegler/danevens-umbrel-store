@@ -7,9 +7,14 @@ category: Development
 version: "26.1.17"
 port: 20211
 description: >-
-  NetAlertX is a network discovery and asset inventory tool for your local
-  network. It helps identify devices, track changes, and surface useful
-  visibility into your LAN.
+  NetAlertX is a free, open-source, and self-hosted network monitoring and asset intelligence framework.
+  It is designed to provide continuous network scanning, device discovery, and real-time alerting for homelabs and small networks.
+  
+  Key Features:
+  - Automated Scanning: Discovers new active devices, monitors IP changes, and alerts you if critical devices go offline.
+  - Multi-Channel Notifications: Supports over 80 notification services (such as Telegram, email, Slack, Discord, and Pushover) via Apprise.
+  - High Customizability: Flexible plugin architecture that integrates with Home Assistant, external scripts, and automation tools.
+  - Local & Secure: All scanned data is kept strictly inside your own home server; no external clouds required.
 
 developer: NetAlertX
 website: https://netalertx.com
