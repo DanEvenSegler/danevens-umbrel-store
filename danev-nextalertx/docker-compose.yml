@@ -13,6 +13,8 @@ services:
     image: ghcr.io/netalertx/netalertx:latest
     network_mode: host
     restart: unless-stopped
+    stop_grace_period: 1m
+    init: true
     read_only: true
     cap_drop:
       - ALL
@@ -37,6 +39,7 @@ services:
       NETALERTX_DEBUG: "0"
       ALWAYS_FRESH_INSTALL: "false"
       TZ: UTC
+      IFACES: "eth0 wlan0 enp1s0" # Host-Netzwerkadapter für Scans
 
 volumes:
   netalertx_data:

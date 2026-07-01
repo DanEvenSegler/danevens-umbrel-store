@@ -1,0 +1,266 @@
+version: "3.7"
+
+services:
+
+  app_proxy:
+    environment:
+      APP_HOST: danev-openwisp_nginx_1
+      APP_PORT: 80
+
+  postgres:
+    image: postgis/postgis:15-3.4-alpine
+    restart: always
+    ports:
+      - "127.0.0.1:5432:5432"
+    environment:
+      - POSTGRES_DB=openwisp
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - TZ=UTC
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redis_data:/data
+
+  influxdb:
+    image: influxdb:1.8-alpine
+    restart: always
+    ports:
+      - "127.0.0.1:8086:8086"
+    environment:
+      - INFLUXDB_DB=openwisp
+      - INFLUXDB_USER=admin
+      - INFLUXDB_USER_PASSWORD=admin
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+
+  dashboard:
+    image: openwisp/openwisp-dashboard:edge
+    restart: always
+    environment:
+      - DASHBOARD_DOMAIN=umbrel.local
+      - API_DOMAIN=umbrel.local
+      - VPN_DOMAIN=umbrel.local
+      - DB_USER=admin
+      - DB_PASS=admin
+      - DB_NAME=openwisp
+      - DB_HOST=postgres
+      - INFLUXDB_USER=admin
+      - INFLUXDB_PASS=admin
+      - INFLUXDB_NAME=openwisp
+      - INFLUXDB_HOST=influxdb
+      - REDIS_HOST=redis
+      - DJANGO_SECRET_KEY=default_secret_key
+      - USE_OPENWISP_MONITORING=True
+      - USE_OPENWISP_RADIUS=True
+      - USE_OPENWISP_TOPOLOGY=True
+      - USE_OPENWISP_FIRMWARE=True
+      - TZ=UTC
+      - SSL_CERT_MODE=No
+    volumes:
+      - openwisp_static:/opt/openwisp/static
+      - openwisp_media:/opt/openwisp/media
+      - openwisp_private_storage:/opt/openwisp/private
+    depends_on:
+      - postgres
+      - redis
+      - influxdb
+
+  api:
+    image: openwisp/openwisp-api:edge
+    restart: always
+    environment:
+      - DASHBOARD_DOMAIN=umbrel.local
+      - API_DOMAIN=umbrel.local
+      - VPN_DOMAIN=umbrel.local
+      - DB_USER=admin
+      - DB_PASS=admin
+      - DB_NAME=openwisp
+      - DB_HOST=postgres
+      - INFLUXDB_USER=admin
+      - INFLUXDB_PASS=admin
+      - INFLUXDB_NAME=openwisp
+      - INFLUXDB_HOST=influxdb
+      - REDIS_HOST=redis
+      - DJANGO_SECRET_KEY=default_secret_key
+      - USE_OPENWISP_MONITORING=True
+      - USE_OPENWISP_RADIUS=True
+      - USE_OPENWISP_TOPOLOGY=True
+      - USE_OPENWISP_FIRMWARE=True
+      - TZ=UTC
+      - SSL_CERT_MODE=No
+    volumes:
+      - openwisp_media:/opt/openwisp/media
+      - openwisp_private_storage:/opt/openwisp/private
+    depends_on:
+      - postgres
+      - redis
+      - dashboard
+
+  websocket:
+    image: openwisp/openwisp-websocket:edge
+    restart: always
+    environment:
+      - DASHBOARD_DOMAIN=umbrel.local
+      - API_DOMAIN=umbrel.local
+      - VPN_DOMAIN=umbrel.local
+      - DB_USER=admin
+      - DB_PASS=admin
+      - DB_NAME=openwisp
+      - DB_HOST=postgres
+      - INFLUXDB_USER=admin
+      - INFLUXDB_PASS=admin
+      - INFLUXDB_NAME=openwisp
+      - INFLUXDB_HOST=influxdb
+      - REDIS_HOST=redis
+      - DJANGO_SECRET_KEY=default_secret_key
+      - USE_OPENWISP_MONITORING=True
+      - USE_OPENWISP_RADIUS=True
+      - USE_OPENWISP_TOPOLOGY=True
+      - USE_OPENWISP_FIRMWARE=True
+      - TZ=UTC
+      - SSL_CERT_MODE=No
+    depends_on:
+      - dashboard
+
+  celery:
+    image: openwisp/openwisp-dashboard:edge
+    restart: always
+    network_mode: host
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    init: true
+    stop_grace_period: 1m
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    environment:
+      - MODULE_NAME=celery
+      - DASHBOARD_DOMAIN=umbrel.local
+      - API_DOMAIN=umbrel.local
+      - VPN_DOMAIN=umbrel.local
+      - DB_USER=admin
+      - DB_PASS=admin
+      - DB_NAME=openwisp
+      - DB_HOST=host.docker.internal
+      - INFLUXDB_USER=admin
+      - INFLUXDB_PASS=admin
+      - INFLUXDB_NAME=openwisp
+      - INFLUXDB_HOST=host.docker.internal
+      - REDIS_HOST=host.docker.internal
+      - DJANGO_SECRET_KEY=default_secret_key
+      - USE_OPENWISP_MONITORING=True
+      - USE_OPENWISP_RADIUS=True
+      - USE_OPENWISP_TOPOLOGY=True
+      - USE_OPENWISP_FIRMWARE=True
+      - TZ=UTC
+      - SSL_CERT_MODE=No
+      - IFACES=eth0 wlan0 enp1s0 # Host-Netzwerkadapter für Scans
+    volumes:
+      - openwisp_media:/opt/openwisp/media
+      - openwisp_private_storage:/opt/openwisp/private
+    depends_on:
+      - postgres
+      - redis
+      - dashboard
+
+  celery_monitoring:
+    image: openwisp/openwisp-dashboard:edge
+    restart: always
+    network_mode: host
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    init: true
+    stop_grace_period: 1m
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    environment:
+      - MODULE_NAME=celery_monitoring
+      - DASHBOARD_DOMAIN=umbrel.local
+      - API_DOMAIN=umbrel.local
+      - VPN_DOMAIN=umbrel.local
+      - DB_USER=admin
+      - DB_PASS=admin
+      - DB_NAME=openwisp
+      - DB_HOST=host.docker.internal
+      - INFLUXDB_USER=admin
+      - INFLUXDB_PASS=admin
+      - INFLUXDB_NAME=openwisp
+      - INFLUXDB_HOST=host.docker.internal
+      - REDIS_HOST=host.docker.internal
+      - DJANGO_SECRET_KEY=default_secret_key
+      - USE_OPENWISP_MONITORING=True
+      - USE_OPENWISP_RADIUS=True
+      - USE_OPENWISP_TOPOLOGY=True
+      - USE_OPENWISP_FIRMWARE=True
+      - TZ=UTC
+      - SSL_CERT_MODE=No
+      - IFACES=eth0 wlan0 enp1s0 # Host-Netzwerkadapter für das Monitoring
+    volumes:
+      - openwisp_media:/opt/openwisp/media
+      - openwisp_private_storage:/opt/openwisp/private
+    depends_on:
+      - postgres
+      - redis
+      - dashboard
+
+  celerybeat:
+    image: openwisp/openwisp-dashboard:edge
+    restart: always
+    environment:
+      - MODULE_NAME=celerybeat
+      - DASHBOARD_DOMAIN=umbrel.local
+      - API_DOMAIN=umbrel.local
+      - VPN_DOMAIN=umbrel.local
+      - DB_USER=admin
+      - DB_PASS=admin
+      - DB_NAME=openwisp
+      - DB_HOST=postgres
+      - INFLUXDB_USER=admin
+      - INFLUXDB_PASS=admin
+      - INFLUXDB_NAME=openwisp
+      - INFLUXDB_HOST=influxdb
+      - REDIS_HOST=redis
+      - DJANGO_SECRET_KEY=default_secret_key
+      - USE_OPENWISP_MONITORING=True
+      - USE_OPENWISP_RADIUS=True
+      - USE_OPENWISP_TOPOLOGY=True
+      - USE_OPENWISP_FIRMWARE=True
+      - TZ=UTC
+      - SSL_CERT_MODE=No
+    depends_on:
+      - postgres
+      - redis
+      - dashboard
+
+  nginx:
+    image: openwisp/openwisp-nginx:edge
+    restart: always
+    environment:
+      - DASHBOARD_DOMAIN=umbrel.local
+      - API_DOMAIN=umbrel.local
+      - VPN_DOMAIN=umbrel.local
+      - SSL_CERT_MODE=No
+    volumes:
+      - openwisp_static:/opt/openwisp/public/static:ro
+      - openwisp_media:/opt/openwisp/public/media:ro
+      - openwisp_private_storage:/opt/openwisp/public/private:ro
+    depends_on:
+      - dashboard
+      - api
+      - websocket
+
+volumes:
+  influxdb_data:
+  postgres_data:
+  redis_data:
+  openwisp_media:
+  openwisp_static:
+  openwisp_private_storage:

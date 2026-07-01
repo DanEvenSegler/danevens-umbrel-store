@@ -1,0 +1,31 @@
+manifestVersion: 1
+id: danev-openwisp
+name: OpenWISP
+tagline: Network management and monitoring system
+icon: https://openwisp.io/images/logo.png
+category: Development
+version: "25.10.0"
+port: 8080
+description: >-
+  OpenWISP is a complete network management system built on Django. It allows managing and monitoring networks of routers (running OpenWrt or other firmwares) easily. It provides configuration management, monitoring, network topology visualization, and more.
+  
+  Key Features:
+  - Centralized Configuration: Manage settings, wireless networks, and interfaces of all your remote routers from a single dashboard.
+  - Network Monitoring: Real-time graphs showing CPU/RAM usage, network traffic, active connections, and ping status.
+  - Geographic & Topology Maps: Visualize your network nodes on interactive maps and inspect link quality between APs.
+  - Captive Portal & RADIUS: Manage user authentication, traffic limits, and voucher generation for public Wi-Fi networks.
+
+developer: OpenWISP
+website: https://openwisp.org
+submitter: Dan Evens
+submission: https://github.com/openwisp/openwisp-monitoring
+repo: https://github.com/openwisp/openwisp-monitoring
+support: https://github.com/openwisp/openwisp-monitoring/issues
+gallery:
+  - https://raw.githubusercontent.com/openwisp/luci-openwisp/master/status-page-screenshot.png
+releaseNotes: >-
+  Initial Community App Store integration for OpenWISP.
+dependencies: []
+path: ""
+defaultUsername: "admin"
+defaultPassword: "admin"
