@@ -23,9 +23,8 @@ submission: https://github.com/mongodb/mongo
 repo: https://github.com/mongodb/mongo
 support: https://www.mongodb.com/community/forums/
 gallery:
-  - https://raw.githubusercontent.com/docker-library/docs/master/mongo/logo.png
-  - https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=1000
-  - https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=1000
+  - https://raw.githubusercontent.com/camunda-community-hub/camunda-8-inbound-connector-mongodb/main/img/compasssample.png
+  - https://raw.githubusercontent.com/lilab-bcb/cirrocumulus/master/docs/images/mongodb.png
 releaseNotes: >-
   Initial Community App Store integration for mongodb.
 dependencies: []

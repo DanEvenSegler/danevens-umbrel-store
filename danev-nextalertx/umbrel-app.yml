@@ -23,9 +23,10 @@ submission: https://github.com/netalertx/NetAlertX
 repo: https://github.com/netalertx/NetAlertX
 support: https://github.com/netalertx/NetAlertX/issues
 gallery:
-  - https://raw.githubusercontent.com/netalertx/NetAlertX/main/docs/img/GENERAL/github_social_image.jpg
-  - https://raw.githubusercontent.com/netalertx/NetAlertX/main/docs/img/WEB_UI_PORT_DEBUG/container_port.png
-  - https://raw.githubusercontent.com/netalertx/NetAlertX/main/docs/img/DEBUG_API_SERVER/graphql_settings_port_token.png
+  - https://raw.githubusercontent.com/netalertx/NetAlertX/main/docs/img/devices_split.png
+  - https://raw.githubusercontent.com/netalertx/NetAlertX/main/docs/img/device_details.png
+  - https://raw.githubusercontent.com/netalertx/NetAlertX/main/docs/img/network.png
+  - https://raw.githubusercontent.com/netalertx/NetAlertX/main/docs/img/settings.png
 releaseNotes: >-
   Initial Community App Store integration for nextalertx.
 dependencies: []

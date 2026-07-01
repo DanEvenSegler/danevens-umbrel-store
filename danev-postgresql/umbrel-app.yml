@@ -23,9 +23,9 @@ submission: https://github.com/postgres/postgres
 repo: https://github.com/postgres/postgres
 support: https://www.postgresql.org/support/
 gallery:
-  - https://raw.githubusercontent.com/docker-library/docs/master/postgres/logo.png
-  - https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=1000
-  - https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=1000
+  - https://raw.githubusercontent.com/marcelo-ochoa/pgadmin4-docker-extension/main/docs/images/screenshot2.png
+  - https://raw.githubusercontent.com/marcelo-ochoa/pgadmin4-docker-extension/main/docs/images/screenshot3.png
+  - https://raw.githubusercontent.com/marcelo-ochoa/pgadmin4-docker-extension/main/docs/images/screenshot4.png
 releaseNotes: >-
   Initial Community App Store integration for postgresql.
 dependencies: []
