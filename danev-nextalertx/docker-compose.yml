@@ -7,7 +7,7 @@ services:
       - "host.docker.internal:host-gateway"
     environment:
       APP_HOST: host.docker.internal
-      APP_PORT: 20211
+      APP_PORT: 20213
 
   netalertx:
     image: ghcr.io/netalertx/netalertx:latest
@@ -32,8 +32,8 @@ services:
       PUID: "20211"
       PGID: "20211"
       LISTEN_ADDR: 0.0.0.0
-      PORT: "20211"
-      APP_CONF_OVERRIDE: '{"GRAPHQL_PORT":"20212"}'
+      PORT: "20213"
+      APP_CONF_OVERRIDE: '{"GRAPHQL_PORT":"20214"}'
       NETALERTX_DEBUG: "0"
       ALWAYS_FRESH_INSTALL: "false"
       TZ: UTC
